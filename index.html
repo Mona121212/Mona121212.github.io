@@ -2,101 +2,498 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Mona He | Data & Analytics Developer</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mona He | Data & Cloud Developer</title>
+    <meta
+      name="description"
+      content="Mona He, Software Development graduate in Calgary, specializing in full-stack programming and cloud-data technologies."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --bg: #f5f7f6;
+        --ink: #141c18;
+        --muted: #52635a;
+        --line: rgba(20, 28, 24, 0.08);
+        --accent: #0f766e; /* 优雅的深青绿色（Teal/Forest） */
+        --accent-hover: #115e59;
+        --chip: rgba(15, 118, 110, 0.08);
+        --chip-ink: #0f766e;
+        --panel-hover: rgba(255, 255, 255, 0.9);
+        --haze1: rgba(204, 251, 241, 0.4); /* 云端科技青绿微光 */
+        --haze2: rgba(220, 252, 231, 0.35); /* 柔和生机绿微光 */
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #0b110e;
+          --ink: #ecfdf5;
+          --muted: #8aab9c;
+          --line: rgba(236, 253, 245, 0.08);
+          --accent: #34d399; /* 极客亮绿 */
+          --accent-hover: #6ee7b7;
+          --chip: rgba(52, 211, 153, 0.12);
+          --chip-ink: #6ee7b7;
+          --panel-hover: rgba(17, 27, 22, 0.85);
+          --haze1: rgba(6, 78, 59, 0.25);
+          --haze2: rgba(4, 47, 46, 0.2);
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
-        font-family: Arial, sans-serif;
-        max-width: 900px;
+        margin: 0;
+        background:
+          radial-gradient(ellipse at 85% 0%, var(--haze1), transparent 60%),
+          radial-gradient(ellipse at 10% 100%, var(--haze2), transparent 55%),
+          var(--bg);
+        background-attachment: fixed;
+        color: var(--ink);
+        font-family:
+          "Hanken Grotesk",
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ---------- 科技感云端数据节点画布 ---------- */
+      #bg {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      /* ---------- 主体排版 ---------- */
+      main {
+        max-width: 760px;
         margin: 0 auto;
-        padding: 60px 30px;
-        line-height: 1.6;
-        color: #222;
+        padding: 72px 24px 48px;
       }
-
+      h1,
+      h2,
+      h3 {
+        font-family: "Newsreader", Georgia, serif;
+        font-weight: 600;
+        line-height: 1.15;
+        margin: 0;
+      }
       h1 {
-        font-size: 42px;
-        margin-bottom: 5px;
+        font-size: clamp(48px, 9vw, 76px);
+        letter-spacing: -0.02em;
       }
-
       h2 {
-        margin-top: 50px;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 8px;
+        font-size: 28px;
+        margin-bottom: 20px;
       }
-
-      .subtitle {
+      h3 {
         font-size: 22px;
-        color: #555;
+      }
+      section {
+        margin-top: 72px;
+      }
+      a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+        transition:
+          text-decoration-color 0.2s,
+          color 0.2s;
+      }
+      a:hover {
+        color: var(--accent-hover);
+      }
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 2px;
       }
 
-      .skills {
-        font-size: 18px;
+      header::after {
+        content: "";
+        display: block;
+        width: 64px;
+        height: 3px;
+        margin-top: 28px;
+        border-radius: 2px;
+        background: var(--accent);
+        opacity: 0.8;
+      }
+      .role {
+        font-size: 22px;
+        color: var(--muted);
+        margin: 10px 0 0;
+      }
+      .intro {
+        max-width: 60ch;
+        margin: 24px 0 0;
+      }
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+        margin: 28px 0 0;
+        padding: 0;
+        list-style: none;
+        font-weight: 500;
       }
 
       .project {
-        margin-bottom: 30px;
+        padding: 24px 20px;
+        margin: 0 -20px;
+        border-top: 1px solid var(--line);
+        border-radius: 12px;
+        transition:
+          background 0.25s,
+          transform 0.25s;
+      }
+      .project:hover {
+        background: var(--panel-hover);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+      }
+      .project:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .project p {
+        margin: 8px 0 0;
+        max-width: 62ch;
+      }
+      .status {
+        font-size: 15px;
+        color: var(--muted);
+        margin-left: 10px;
+        font-family: "Hanken Grotesk", sans-serif;
+        font-weight: 400;
+      }
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .stack li {
+        background: var(--chip);
+        color: var(--chip-ink);
+        padding: 2px 10px;
+        border-radius: 999px;
+        font-size: 14px;
       }
 
-      a {
-        color: #0969da;
-        text-decoration: none;
-        margin-right: 15px;
+      .certs {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .certs li {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 20px;
+        margin: 0 -20px;
+        border-top: 1px solid var(--line);
+        border-radius: 12px;
+        transition: background 0.25s;
+      }
+      .certs li:hover {
+        background: var(--panel-hover);
+      }
+      .certs li:last-child {
+        border-bottom: 1px solid var(--line);
+      }
+      .certs span {
+        color: var(--muted);
+        display: block;
+        font-size: 15px;
+      }
+      .certs a {
+        white-space: nowrap;
+        font-weight: 500;
       }
 
-      a:hover {
-        text-decoration: underline;
+      footer {
+        margin-top: 72px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      /* 载入微动效 */
+      main {
+        animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .project,
+        .certs li {
+          margin: 0 -12px;
+          padding-left: 12px;
+          padding-right: 12px;
+        }
       }
     </style>
   </head>
-
   <body>
-    <h1>Mona He</h1>
+    <!-- 动态云端数据节点画布 -->
+    <canvas id="bg" aria-hidden="true"></canvas>
 
-    <p class="subtitle">Data & Analytics Developer</p>
+    <main>
+      <header>
+        <h1>Mona He</h1>
+        <p class="role">Data & Cloud Developer</p>
+        <p class="intro">
+          Software Development graduate based in Calgary, with a solid
+          foundation in full-stack programming (TypeScript, React, C#) and
+          cloud-data technologies. Passionate about building clean web
+          applications and working with data.
+        </p>
+        <ul class="links">
+          <li>
+            <a
+              href="https://github.com/Mona121212"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/xiaomei-he-mona12/"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </li>
+          <li><a href="mailto:xiaomei.mona.he@gmail.com">Email</a></li>
+        </ul>
+      </header>
 
-    <p>Calgary, AB</p>
+      <section id="projects">
+        <h2>Projects</h2>
+        <article class="project">
+          <h3>
+            Alberta Energy Data Platform <span class="status">In progress</span>
+          </h3>
+          <p>
+            A data engineering and analytics project on Alberta energy datasets,
+            from raw data to Power BI reports.
+          </p>
+          <ul class="stack">
+            <li>SQL</li>
+            <li>Python</li>
+            <li>Microsoft Fabric</li>
+            <li>Databricks</li>
+            <li>Power BI</li>
+          </ul>
+        </article>
 
-    <p class="skills">
-      SQL · Python · Microsoft Fabric · Databricks · Power BI
-    </p>
+        <article class="project">
+          <h3>Diet Analysis Cloud Dashboard</h3>
+          <p>
+            A full-stack Azure app that analyzes a real diet dataset. Azure
+            Functions process the data in a serverless way and store precomputed
+            results in Blob Storage, so the dashboard loads fast. A React front
+            end charts the results through REST APIs.
+          </p>
+          <ul class="stack">
+            <li>Azure Functions</li>
+            <li>Blob Storage</li>
+            <li>Python</li>
+            <li>React</li>
+            <li>Chart.js</li>
+          </ul>
+        </article>
 
-    <p>
-      <a href="https://github.com/mona121212" target="_blank"> GitHub </a>
+        <article class="project">
+          <h3>Barber Shop Appointment System</h3>
+          <p>
+            A multi-tenant booking system where each shop owner manages their
+            own schedule and appointments.
+          </p>
+          <ul class="stack">
+            <li>Next.js</li>
+            <li>Supabase</li>
+            <li>TypeScript</li>
+          </ul>
+        </article>
 
-      <a href="#" target="_blank"> LinkedIn </a>
+        <p style="margin-top: 24px">
+          <a
+            href="https://github.com/Mona121212?tab=repositories"
+            target="_blank"
+            rel="noopener"
+            >See all repositories on GitHub &rarr;</a
+          >
+        </p>
+      </section>
 
-      <a href="#" target="_blank"> Resume </a>
-    </p>
+      <section id="certifications">
+        <h2>Certifications</h2>
+        <ul class="certs">
+          <li>
+            <div>Power BI Data Analyst (PL-300)<span>Microsoft</span></div>
+            <a
+              href="https://learn.microsoft.com/en-us/users/xiaomeihe/credentials/d7c79d94bba57484"
+              target="_blank"
+              rel="noopener"
+              >Verify</a
+            >
+          </li>
+          <li>
+            <div>
+              Fabric Data Engineer Associate (DP-700)<span>Microsoft</span>
+            </div>
+            <a
+              href="https://learn.microsoft.com/en-us/users/xiaomeihe/credentials/bb02fcc7da729a19"
+              target="_blank"
+              rel="noopener"
+              >Verify</a
+            >
+          </li>
+          <li>
+            <div>Data Engineer Professional<span>Databricks</span></div>
+            <a
+              href="https://credentials.databricks.com/d1c69243-150d-4464-ba92-ba34a23add01"
+              target="_blank"
+              rel="noopener"
+              >Verify</a
+            >
+          </li>
+        </ul>
+      </section>
 
-    <h2>Projects</h2>
+      <section id="about">
+        <h2>About</h2>
+        <p class="intro">
+          I enjoy continuous learning and building things that work. Alongside
+          my formal studies at SAIT, I've spent the past two years self-studying
+          cloud and data tools—such as Azure, Databricks, and Power BI—to
+          complement my programming skills. My background in education has also
+          given me strong communication and organizational habits, which help me
+          write clear documentation and collaborate smoothly with team members.
+        </p>
+      </section>
 
-    <div class="project">
-      <h3>Alberta Energy Data Platform</h3>
+      <footer>Mona He &middot; Calgary, AB</footer>
+    </main>
 
-      <p>In Progress</p>
+    <script>
+      (function () {
+        var cv = document.getElementById("bg"),
+          ctx = cv.getContext("2d"),
+          w,
+          h,
+          dpr,
+          nodes = [],
+          last = 0;
+        var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var dark = matchMedia("(prefers-color-scheme: dark)");
 
-      <p>
-        Data engineering and analytics project exploring energy-related datasets
-        using SQL, Python, Microsoft Fabric, Databricks, and Power BI.
-      </p>
-    </div>
+        function rnd(a, b) {
+          return a + Math.random() * (b - a);
+        }
 
-    <h2>Certifications</h2>
+        function makeNode(initial) {
+          return {
+            x: rnd(0, w),
+            y: initial ? rnd(0, h) : h + 20,
+            r: rnd(1.5, 3.5), // 数据节点大小
+            vy: rnd(-12, -28), // 向上浮动，模拟云端传输流
+            vx: rnd(-0.3, 0.3),
+            alpha: rnd(0.15, 0.5),
+          };
+        }
 
-    <ul>
-      <li>PL-300 — Microsoft Power BI Data Analyst</li>
-      <li>DP-700 — Fabric Analytics Engineer Associate</li>
-      <li>Databricks Data Engineer Professional</li>
-    </ul>
+        function resize() {
+          dpr = Math.min(devicePixelRatio || 1, 2);
+          w = innerWidth;
+          h = innerHeight;
+          cv.width = w * dpr;
+          cv.height = h * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          var count = w < 640 ? 18 : 35;
+          nodes = [];
+          for (var i = 0; i < count; i++) nodes.push(makeNode(true));
+          if (reduce) draw(0);
+        }
 
-    <h2>About</h2>
+        function draw(t) {
+          var dt = last ? Math.min((t - last) / 1000, 0.1) : 0;
+          last = t;
+          ctx.clearRect(0, 0, w, h);
 
-    <p>
-      Software Development student at SAIT with an interest in data analytics,
-      business intelligence, data engineering, and enterprise applications.
-    </p>
+          var isDark = dark.matches;
+
+          // 绘制微弱的网格/数据流连线或节点
+          for (var i = 0; i < nodes.length; i++) {
+            var p = nodes[i];
+            p.y += p.vy * dt;
+            p.x += p.vx + Math.sin(t * 0.0012 + i) * 0.15;
+
+            if (p.y + p.r < 0) {
+              nodes[i] = makeNode(false);
+              continue;
+            }
+
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = isDark
+              ? "rgba(52, 211, 153, 0.4)"
+              : "rgba(15, 118, 110, 0.35)";
+            ctx.fill();
+            ctx.restore();
+          }
+
+          // 连线相邻的近距离节点，呈现类似云端分布式网络的感觉
+          for (var i = 0; i < nodes.length; i++) {
+            for (var j = i + 1; j < nodes.length; j++) {
+              var dx = nodes[i].x - nodes[j].x;
+              var dy = nodes[i].y - nodes[j].y;
+              var dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 110) {
+                ctx.save();
+                ctx.globalAlpha = (1 - dist / 110) * 0.12;
+                ctx.beginPath();
+                ctx.moveTo(nodes[i].x, nodes[i].y);
+                ctx.lineTo(nodes[j].x, nodes[j].y);
+                ctx.strokeStyle = isDark ? "#34d399" : "#0f766e";
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+                ctx.restore();
+              }
+            }
+          }
+
+          if (!reduce) requestAnimationFrame(draw);
+        }
+
+        addEventListener("resize", resize);
+        resize();
+        if (!reduce) requestAnimationFrame(draw);
+      })();
+    </script>
   </body>
 </html>
